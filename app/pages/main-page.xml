@@ -1,0 +1,24 @@
+<!--
+The markup in NativeScript apps contains a series of user interface components, each
+of which NativeScript renders with a platform-specific iOS or Android native control.
+You can find a full list of user interface components you can use in your app at
+https://docs.nativescript.org/ui/components.
+-->
+<Page loaded="pageLoaded" class="page" 
+	xmlns="http://www.nativescript.org/tns.xsd">
+	<Page.actionBar>
+		<ActionBar title="RSS Reader Home"/>
+	</Page.actionBar>
+
+	<GridLayout columns="*" rows="*">
+		<ListView row="1" col="0" items="{{ feeds }}">
+			<ListView.itemTemplate>
+				<GridLayout class="listItem" columns="*" rows="auto,auto,auto" verticalAlignment="top">
+					<Label class="listItemHeader" text="{{ title[0] }}" textWrap="true" row = "0" col="0" verticalAlignment="center" />
+					<WebView isUserInteractionEnabled="false" row="1" col="0" src="{{ description[0] }}"></WebView >
+					<Label class="listItemReadMore" url = "{{ link[0] }}" text="Read More..." tap="{{ $parents['ListView'].onItemTap }}" row="2" col="2"/>
+				</GridLayout>
+			</ListView.itemTemplate>
+		</ListView>
+	</GridLayout>
+</Page>
